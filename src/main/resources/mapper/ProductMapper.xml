@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.safetia.app.model.ProductDAO">
+		<select id="selectOne" resultType="com.safetia.app.model.entity.Product">
+			select * from product where productId = #{productId} and storeId = #{storeId}
+		</select>
+		<select id="selectAll" resultType="com.safetia.app.model.entity.Product">
+			select * from product where storeId = #{storeId}
+		</select>
+		<insert id="insertOne" parameterType="com.safetia.app.model.entity.Product">
+			insert into product (productId, productName, storeId) values (#{product.productId}, #{product.productName}, #{storeId})
+		</insert>
+		<update id="updateOne" parameterType="com.safetia.app.model.entity.Product">
+			update product set productName = #{product.productName} where productId = #{product.productId} and storeId = #{storeId}
+		</update>
+		<delete id="deleteOne">
+			delete from product where productId = #{productId} and storeId = #{storeId}
+		</delete>
+	</mapper>

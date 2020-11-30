@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.safetia.app.model.SyncGroupDAO">
+		<select id="selectOne" resultType="com.safetia.app.model.entity.SyncGroup">
+			select * from sync_level where storeId = #{storeId}
+		</select>
+		<select id="selectGroup" resultType="com.safetia.app.model.entity.SyncGroup">
+			SELECT * FROM sync_level WHERE syncGroupId = (SELECT syncGroupId FROM sync_level WHERE storeId = #{storeId});
+		</select>
+	</mapper>
